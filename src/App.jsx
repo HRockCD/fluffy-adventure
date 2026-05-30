@@ -218,7 +218,7 @@ export default function App() {
             <ImageWithFallback
               src={business.logo}
               alt={business.name}
-              className="h-12 w-12 rounded-2xl border border-white/15 object-cover transition duration-300 group-hover:scale-105"
+              className="h-14 w-22 rounded-2xl border border-white/15 object-cover transition duration-300 group-hover:scale-105"
               fallback="HR"
             />
 
@@ -363,7 +363,7 @@ export default function App() {
                       <ImageWithFallback
                         src={business.logo}
                         alt="High Rock Custom Designs logo"
-                        className="mx-auto h-40 w-full object-contain"
+                        className="mx-auto h-full w-full object-contain"
                         fallback="HR"
                       />
 
@@ -1040,7 +1040,7 @@ export default function App() {
                 <ImageWithFallback
                   src={business.logo}
                   alt={business.name}
-                  className="h-11 w-11 rounded-2xl object-cover"
+                  className="h-14 w-22 rounded-2xl object-cover"
                   fallback="HR"
                 />
                 <div>
