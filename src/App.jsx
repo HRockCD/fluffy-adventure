@@ -53,7 +53,7 @@ export default function App() {
   const business = {
     name: "High Rock Custom Designs",
     phone: "704-433-3825",
-    email: "highrockcustomdesign@outlook.com",
+    email: "contact@highrockcustomdesigns.com",
     location: "Based in Salisbury, NC",
     logo: "/images/highrock-logo2.png",
   };
