@@ -207,7 +207,7 @@ export default function App() {
   const packages = [
     {
       name: "Website Package",
-      price: "Starting at $500",
+      price: "Starting at $2,000",
       text: "A clean professional website for local businesses that need to look established online.",
       features: [
         "Mobile-friendly website",
@@ -219,12 +219,12 @@ export default function App() {
     },
     {
       name: "Brand + Website",
-      price: "Starting at $800",
+      price: "Starting at $2,200",
       text: "A stronger package for businesses that need both a website and a more polished brand presence.",
       featured: true,
       features: [
         "Website design",
-        "Logo/brand direction",
+        "Logo Design",
         "Brand colors",
         "Social launch graphic",
         "Basic SEO setup",
@@ -233,7 +233,7 @@ export default function App() {
     },
     {
       name: "Logo Package",
-      price: "Starting at $200",
+      price: "Starting at $500",
       text: "A clean logo starting point for new businesses or brands that need a professional identity.",
       features: [
         "Logo concepts",
