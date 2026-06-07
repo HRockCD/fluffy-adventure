@@ -50,55 +50,11 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
   const [page, setPage] = useState("home");
-  const [customProjectImages, setCustomProjectImages] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("highrock_project_images")) || {};
-    } catch {
-      return {};
-    }
-  });
-
-  const getProjectImage = (project) => {
-    return customProjectImages[project.title] || project.image;
-  };
-
-  const updateProjectImage = (projectTitle, file) => {
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const updatedImages = {
-        ...customProjectImages,
-        [projectTitle]: reader.result,
-      };
-
-      setCustomProjectImages(updatedImages);
-      localStorage.setItem(
-        "highrock_project_images",
-        JSON.stringify(updatedImages)
-      );
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  const resetProjectImage = (projectTitle) => {
-    const updatedImages = { ...customProjectImages };
-    delete updatedImages[projectTitle];
-
-    setCustomProjectImages(updatedImages);
-    localStorage.setItem(
-      "highrock_project_images",
-      JSON.stringify(updatedImages)
-    );
-  };
-
   const business = {
     name: "High Rock Custom Designs",
     phone: "704-433-3825",
     email: "contact@highrockcustomdesigns.com",
-    location: "Based in Salisbury, NC",
+    location: "North Carolina Based",
     logo: "/images/highrock-logo2.png",
   };
 
@@ -128,6 +84,11 @@ export default function App() {
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
   };
 
+  // COMPLETED WORK PHOTOS
+  // To change a project photo in VS Code:
+  // 1. Put your new image inside the public/images folder.
+  // 2. Change the image path below to match the file name.
+  // Example: image: "/images/my-new-project-photo.jpg"
   const projects = [
     {
       title: "Frontline Car Wash",
@@ -554,7 +515,7 @@ export default function App() {
                   className="flex flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-amber-400/30 md:flex-row"
                 >
                   <ImageWithFallback
-                    src={getProjectImage(project)}
+                    src={project.image}
                     alt={project.title}
                     className="h-40 w-full rounded-2xl object-cover md:w-48"
                     fallback="HR"
@@ -670,7 +631,7 @@ export default function App() {
             >
               <div className="relative h-72 overflow-hidden bg-slate-900">
                 <ImageWithFallback
-                  src={getProjectImage(project)}
+                  src={project.image}
                   alt={project.title}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   fallback="HR"
@@ -721,39 +682,6 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-dashed border-amber-400/30 bg-amber-400/5 p-4">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-300">
-                    Edit Completed Work Photo
-                  </p>
-                  <p className="mt-2 text-xs leading-5 text-slate-400">
-                    Upload a new image for this project. The change saves in
-                    this browser so you can preview the completed work photo.
-                  </p>
-
-                  <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                    <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-amber-500 px-5 py-3 text-sm font-black text-white transition hover:-translate-y-1 hover:bg-amber-400">
-                      Upload New Photo
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(e) =>
-                          updateProjectImage(project.title, e.target.files?.[0])
-                        }
-                      />
-                    </label>
-
-                    {customProjectImages[project.title] && (
-                      <button
-                        type="button"
-                        onClick={() => resetProjectImage(project.title)}
-                        className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-black text-white transition hover:-translate-y-1 hover:bg-white/10"
-                      >
-                        Reset Photo
-                      </button>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
           ))}
